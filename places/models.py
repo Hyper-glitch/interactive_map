@@ -14,7 +14,7 @@ class Place(models.Model):
 
 class Image(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='places')
+    image = models.ImageField(upload_to='places_pics')
 
     def __str__(self):
-        return self.name
+        return f'{self.pk} {self.name}'
