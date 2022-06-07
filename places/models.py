@@ -12,14 +12,14 @@ class Place(models.Model):
         return self.title
 
     def get_coordinates(self):
-        coordsinates = [*self.coordinates.values()]
-        return coordsinates
+        coordinates = [*self.coordinates.values()]
+        return coordinates
 
 
 class Image(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='places_pics')
-    place = models.ForeignKey(Place, on_delete=models.CASCADE)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')
 
     def __str__(self):
         return f'{self.pk} {self.name}'
