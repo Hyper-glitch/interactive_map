@@ -1,5 +1,6 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.core import serializers
+import json
 from places.models import Place
 
 
@@ -8,7 +9,7 @@ def index(request):
         "type": "FeatureCollection",
         "features": get_json_places(request),
     }
-    return render(request, 'index.html', context=data)
+    return render(request, 'index.html', context={"data": data})
 
 
 def get_json_places(request):
@@ -17,15 +18,6 @@ def get_json_places(request):
     place_id = 0
 
     for place in places:
-        images = place.images.all()
-        detailed_places_info = {
-            "title": place.title,
-            "imgs": [image.image.url for image in images],
-            "description_short": place.description_short,
-            "description_long": place.description_long,
-            "coordinates": place.coordinates,
-        }
-
         place_info = {
             "type": "Feature",
             "geometry": {
@@ -35,10 +27,23 @@ def get_json_places(request):
             "properties": {
                 "title": place.title,
                 "placeId": place_id,
-                "detailsUrl": detailed_places_info
+                "detailsUrl": f"get_json_place/{place.pk}"
             }
         }
         features.append(place_info)
         place_id += 1
 
     return features
+
+
+def get_json_place(request, place_pk):
+    place = Place.objects.get(pk=place_pk)
+    images = place.images.all()
+    detailed_places_info = {
+        "title": place.title,
+        "imgs": [image.image.url for image in images],
+        "description_short": place.description_short,
+        "description_long": place.description_long,
+        "coordinates": place.coordinates,
+    }
+    return JsonResponse(detailed_places_info, safe=False)
