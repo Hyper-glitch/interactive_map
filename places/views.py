@@ -1,18 +1,18 @@
 from django.http import JsonResponse
-from django.shortcuts import render
-import json
+from django.shortcuts import render, get_object_or_404
+
 from places.models import Place
 
 
 def index(request):
     data = {
         "type": "FeatureCollection",
-        "features": get_json_places(request),
+        "features": create_places_info(request),
     }
     return render(request, 'index.html', context={"data": data})
 
 
-def get_json_places(request):
+def create_places_info(request):
     places = Place.objects.all()
     features = []
     place_id = 0
@@ -27,7 +27,7 @@ def get_json_places(request):
             "properties": {
                 "title": place.title,
                 "placeId": place_id,
-                "detailsUrl": f"get_json_place/{place.pk}"
+                "detailsUrl": f"place/{place.pk}"
             }
         }
         features.append(place_info)
@@ -37,7 +37,7 @@ def get_json_places(request):
 
 
 def get_json_place(request, place_pk):
-    place = Place.objects.get(pk=place_pk)
+    place = get_object_or_404(Place, pk=place_pk)
     images = place.images.all()
     detailed_places_info = {
         "title": place.title,
