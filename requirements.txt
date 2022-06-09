@@ -2,4 +2,4 @@ Django~=3.2.10
 jsonfield
 Pillow
 django-extensions
-ipython
+django-admin-sortable2
