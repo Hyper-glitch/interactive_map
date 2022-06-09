@@ -3,6 +3,15 @@ from jsonfield import JSONField
 
 
 class Place(models.Model):
+
+    class Meta:
+        ordering = ["order"]
+
+    order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
     title = models.CharField(max_length=200)
     description_short = models.CharField(max_length=500)
     description_long = models.TextField()
@@ -17,6 +26,9 @@ class Place(models.Model):
 
 
 class Image(models.Model):
+    class Meta:
+        ordering = ["position"]
+
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='places_pics')
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')
