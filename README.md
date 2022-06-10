@@ -18,11 +18,19 @@
 git clone https://github.com/Hyper-glitch/interactive_map.git
 ```
 2. Create **.env** file and set the <ins>environmental variables</ins> as described above.
-3. Install dependencies:
+3. Create venv
+```bash
+python3 -m venv venv
+```
+4. Activate venv
+```bash
+source venv/bin/activate
+```
+5. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-4. Run python script
+6. Run django server
 ```bash
 python3 manage.py runserver
 ```
