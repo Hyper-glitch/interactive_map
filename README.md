@@ -24,9 +24,5 @@ pip install -r requirements.txt
 ```
 4. Run python script
 ```bash
-python3 main.py
-```
-5. Run with docker
-```bash
-docker build -t comics_publicist . && docker run -d --env-file .env comics_publicist
+python3 manage.py runserver
 ```
