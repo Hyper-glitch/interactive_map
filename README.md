@@ -2,7 +2,7 @@
 
 ## Basic information
 
-***interactive_map*** allows you to add and describe interesting places via Django admin and show them on front side.
+***interactive_map*** allows you to add and describe interesting places via Django admin and show them on show on the map.
 
 ## Starting
 
