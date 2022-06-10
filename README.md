@@ -15,7 +15,7 @@
 
 1. clone the repository:
 ```bash
-git clone https://github.com/Hyper-glitch/Comics_publicist.git
+git clone https://github.com/Hyper-glitch/interactive_map.git
 ```
 2. Create **.env** file and set the <ins>environmental variables</ins> as described above.
 3. Install dependencies:
