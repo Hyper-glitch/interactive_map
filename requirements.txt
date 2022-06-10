@@ -3,3 +3,4 @@ jsonfield
 Pillow
 django-extensions
 django-admin-sortable2
+django-tinymce
