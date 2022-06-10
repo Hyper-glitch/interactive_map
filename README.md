@@ -34,3 +34,6 @@ pip install -r requirements.txt
 ```bash
 python3 manage.py runserver
 ```
+## There are urls
+for main page: http://127.0.0.1:8000/
+for django admin: http://127.0.0.1:8000/admin
