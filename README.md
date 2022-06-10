@@ -6,11 +6,12 @@
 
 ## Starting
 
-| Environmental          | Description                                           |
-|------------------------|-------------------------------------------------------|
-| `VK_CLIENT_ID`         | your application ID, needed for getting access token  |
-| `VK_ACCESS_TOKEN`      | personal token to interact with VK API methods        |
-| `PUBLICATION_FREQUENCY`| posting frequency into VK public                      |
+| Environmental           | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| `SECRET_KEY`            | A secret key for a particular Django installation.      |
+| `SESSION_COOKIE_SECURE` | Whether to use a secure cookie for the session cookie   |
+| `DEBUG`                 | Never deploy a site into production with DEBUG turned on|
+| `ALLOWED_HOSTS`         | A list of strings representing the host/domain names    |
 
 1. clone the repository:
 ```bash
