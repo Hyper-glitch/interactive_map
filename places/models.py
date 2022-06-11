@@ -3,7 +3,6 @@ from jsonfield import JSONField
 
 
 class Place(models.Model):
-
     class Meta:
         ordering = ["order"]
 
