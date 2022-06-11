@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 from jsonfield import JSONField
 
 
@@ -13,7 +14,7 @@ class Place(models.Model):
     )
     title = models.CharField(max_length=200)
     description_short = models.CharField(max_length=500)
-    description_long = models.TextField()
+    description_long = HTMLField()
     coordinates = JSONField()
 
     def __str__(self):
