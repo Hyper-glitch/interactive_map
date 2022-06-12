@@ -35,5 +35,5 @@ pip install -r requirements.txt
 python3 manage.py runserver
 ```
 ## There are urls
-for the main page: http://127.0.0.1:8000/   
-for django admin: http://127.0.0.1:8000/admin
+for the main page: https://hyperglitch.pythonanywhere.com
+for django admin: https://hyperglitch.pythonanywhere.com/admin
