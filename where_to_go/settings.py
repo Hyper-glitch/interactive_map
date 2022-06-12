@@ -30,7 +30,7 @@ SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', False)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(' ')
 
 # Application definition
 
