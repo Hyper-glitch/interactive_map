@@ -5,3 +5,4 @@ django-extensions
 django-admin-sortable2
 django-tinymce
 python-dotenv
+requests
