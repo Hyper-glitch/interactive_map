@@ -5,13 +5,10 @@ from jsonfield import JSONField
 
 class Place(models.Model):
     class Meta:
-        ordering = ["order"]
+        ordering = ['order']
+        unique_together = ['title', 'id']
 
-    order = models.PositiveIntegerField(
-        default=0,
-        blank=False,
-        null=False,
-    )
+    order = models.PositiveIntegerField(default=1)
     title = models.CharField(max_length=200)
     description_short = models.CharField(max_length=500)
     description_long = HTMLField()
@@ -30,9 +27,9 @@ class Image(models.Model):
         ordering = ["position"]
 
     name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='places_pics')
+    image = models.ImageField(upload_to='places_pics', null=True)
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')
-    position = models.PositiveIntegerField()
+    position = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return f'{self.position} {self.name}'
