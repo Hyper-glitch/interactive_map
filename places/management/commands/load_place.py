@@ -1,3 +1,4 @@
+""" Module for custom management commands """
 import uuid
 
 import requests
@@ -14,6 +15,7 @@ class Command(BaseCommand):
         parser.add_argument('places_urls', nargs='+', type=str)
 
     def handle(self, *args, **options):
+        """ Read file with urls and create places with json info."""
         path = options['places_urls'][0]
 
         with open(path) as places_urls:
@@ -34,6 +36,7 @@ class Command(BaseCommand):
 
 
 def save_place_img(img_url, place, position):
+    """ Send request for getting img content and save it in FileField. """
     filename = str(uuid.uuid4())
     response = requests.get(img_url)
     response.raise_for_status()
