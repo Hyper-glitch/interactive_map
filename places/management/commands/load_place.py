@@ -27,7 +27,8 @@ class Command(BaseCommand):
                 place = response.json()
                 place_obj = Place.objects.get_or_create(
                     title=place['title'], description_short=place['description_short'],
-                    description_long=place['description_long'], coordinates=place['coordinates'],
+                    description_long=place['description_long'], latitude=place['coordinates']['lat'],
+                    longitude=place['coordinates']['lng'],
                 )
                 for img in place['imgs']:
                     position = 1
