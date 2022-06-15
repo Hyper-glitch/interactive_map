@@ -16,9 +16,8 @@ def index(request):
 def create_places_info(request):
     places = Place.objects.all()
     features = []
-    place_id = 0
 
-    for place in places:
+    for place_id, place in enumerate(places):
         place_info = {
             "type": "Feature",
             "geometry": {
@@ -32,7 +31,6 @@ def create_places_info(request):
             }
         }
         features.append(place_info)
-        place_id += 1
 
     return features
 
