@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 class Place(models.Model):
     order = models.PositiveIntegerField(default=1)
     title = models.CharField(max_length=200)
-    description_short = models.CharField(max_length=500)
+    description_short = models.TextField()
     description_long = HTMLField()
     coordinates = JSONField()
 
