@@ -22,7 +22,7 @@ def create_places_info(request):
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": place.get_coordinates()
+                "coordinates": [place.longitude, place.latitude]
             },
             "properties": {
                 "title": place.title,
@@ -44,6 +44,6 @@ def get_json_place(request, place_pk):
         "imgs": [image.image.url for image in images],
         "description_short": place.description_short,
         "description_long": place.description_long,
-        "coordinates": place.coordinates,
+        "coordinates": [place.longitude, place.latitude],
     }
     return JsonResponse(detailed_places_info, safe=False)
