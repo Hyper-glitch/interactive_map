@@ -57,3 +57,5 @@ JSON example with place's information
 ## There are urls
 for the main page: https://hyperglitch.pythonanywhere.com   
 for django admin: https://hyperglitch.pythonanywhere.com/admin
+| `Username` | admin |
+| `Password` | admin |
