@@ -1,5 +1,4 @@
 from django.db import models
-from jsonfield import JSONField
 from tinymce.models import HTMLField
 
 
@@ -8,7 +7,8 @@ class Place(models.Model):
     title = models.CharField(max_length=200)
     description_short = models.TextField(blank=True, null=True)
     description_long = HTMLField(blank=True, null=True)
-    coordinates = JSONField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     class Meta:
         ordering = ['order']
@@ -16,10 +16,6 @@ class Place(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_coordinates(self):
-        coordinates = [*self.coordinates.values()]
-        return coordinates
 
 
 class Image(models.Model):
