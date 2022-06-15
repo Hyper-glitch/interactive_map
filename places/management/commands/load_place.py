@@ -25,14 +25,18 @@ class Command(BaseCommand):
                 response = requests.get(url=url.rstrip('\n'))
                 response.raise_for_status()
                 place = response.json()
-                place_obj = Place.objects.get_or_create(
-                    title=place['title'], description_short=place['description_short'],
-                    description_long=place['description_long'], latitude=place['coordinates']['lat'],
-                    longitude=place['coordinates']['lng'],
+                place_obj, created = Place.objects.get_or_create(
+                    title=place['title'],
+                    defaults={
+                        'description_short': place['description_short'],
+                        'description_long': place['description_long'],
+                        'latitude': place['coordinates']['lat'],
+                        'longitude': place['coordinates']['lng'],
+                    }
                 )
                 for img in place['imgs']:
                     position = 1
-                    save_place_img(img_url=img, place=place_obj[0], position=position)
+                    save_place_img(img_url=img, place=place_obj, position=position)
                     position += 1
 
 
