@@ -60,6 +60,6 @@ for django admin: https://hyperglitch.pythonanywhere.com/admin
 <details><summary>Admin creds</summary>
 <p>
 **Username:** admin   
-**Password:** admin
+    **Password:** admin
 </p>
 </details>
