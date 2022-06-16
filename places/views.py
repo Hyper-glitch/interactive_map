@@ -8,17 +8,17 @@ from places.models import Place
 def index(request):
     data = {
         "type": "FeatureCollection",
-        "features": create_places_info(request),
+        "features": create_places_geojson(request),
     }
     return render(request, 'index.html', context={"data": data})
 
 
-def create_places_info(request):
+def create_places_geojson(request):
     places = Place.objects.all()
     features = []
 
     for place_id, place in enumerate(places):
-        place_info = {
+        places_geojson = {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -30,7 +30,7 @@ def create_places_info(request):
                 "detailsUrl": f"{reverse('get_json_place', args=(place.pk,))}"
             }
         }
-        features.append(place_info)
+        features.append(places_geojson)
 
     return features
 
@@ -38,11 +38,11 @@ def create_places_info(request):
 def get_json_place(request, place_pk):
     place = get_object_or_404(Place, pk=place_pk)
     images = place.images.all()
-    detailed_places_info = {
+    serialized_place = {
         "title": place.title,
         "imgs": [image.image.url for image in images],
         "description_short": place.description_short,
         "description_long": place.description_long,
         "coordinates": [place.longitude, place.latitude],
     }
-    return JsonResponse(detailed_places_info, safe=False)
+    return JsonResponse(serialized_place, safe=False)
