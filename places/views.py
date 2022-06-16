@@ -6,11 +6,11 @@ from places.models import Place
 
 
 def index(request):
-    data = {
+    places_geojson = {
         "type": "FeatureCollection",
         "features": create_places_geojson(request),
     }
-    return render(request, 'index.html', context={"data": data})
+    return render(request, 'index.html', context={"places_geojson": places_geojson})
 
 
 def create_places_geojson(request):
