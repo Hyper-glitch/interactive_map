@@ -8,6 +8,7 @@ from .models import Place, Image
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     readonly_fields = ('get_preview',)
+    extra = 0
 
     def get_preview(self, image):
         return format_html('<img src="{}" width="300" height="200" />', image.image.url)
