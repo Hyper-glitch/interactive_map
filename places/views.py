@@ -17,7 +17,7 @@ def create_places_geojson(request):
     places = Place.objects.all()
     features = []
 
-    for place_id, place in enumerate(places):
+    for index, place in enumerate(places):
         places_geojson = {
             "type": "Feature",
             "geometry": {
@@ -26,7 +26,7 @@ def create_places_geojson(request):
             },
             "properties": {
                 "title": place.title,
-                "placeId": place_id,
+                "placeId": index,
                 "detailsUrl": f"{reverse('get_json_place', args=(place.pk,))}"
             }
         }
