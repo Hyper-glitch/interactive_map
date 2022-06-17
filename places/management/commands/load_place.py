@@ -24,19 +24,19 @@ class Command(BaseCommand):
         for url in urls:
             response = requests.get(url=url.rstrip('\n'))
             response.raise_for_status()
-            place = response.json()
-            place_obj, created = Place.objects.get_or_create(
-                title=place['title'],
+            payload = response.json()
+            place, created = Place.objects.get_or_create(
+                title=payload['title'],
                 defaults={
-                    'description_short': place['description_short'],
-                    'description_long': place['description_long'],
-                    'latitude': place['coordinates']['lat'],
-                    'longitude': place['coordinates']['lng'],
+                    'description_short': payload['description_short'],
+                    'description_long': payload['description_long'],
+                    'latitude': payload['coordinates']['lat'],
+                    'longitude': payload['coordinates']['lng'],
                 }
             )
             for img in place['imgs']:
                 position = 1
-                save_place_img(img_url=img, place=place_obj, position=position)
+                save_place_img(img_url=img, place=place, position=position)
                 position += 1
 
 
