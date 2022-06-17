@@ -34,10 +34,8 @@ class Command(BaseCommand):
                     'longitude': payload['coordinates']['lng'],
                 }
             )
-            for img in place['imgs']:
-                position = 1
+            for position, img in enumerate(payload['imgs'], start=1):
                 save_place_img(img_url=img, place=place, position=position)
-                position += 1
 
 
 def save_place_img(img_url, place, position):
