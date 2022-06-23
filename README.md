@@ -6,12 +6,12 @@
 
 ## Starting
 
-| Environmental           | Description                                             |
-|-------------------------|---------------------------------------------------------|
-| `SECRET_KEY`            | A secret key for a particular Django installation.      |
-| `SESSION_COOKIE_SECURE` | Whether to use a secure cookie for the session cookie   |
-| `DEBUG`                 | Never deploy a site into production with DEBUG turned on|
-| `ALLOWED_HOSTS`         | A list of strings representing the host/domain names    |
+| Environmental           | Description                                              |
+|-------------------------|----------------------------------------------------------|
+| `SECRET_KEY`            | A secret key for a particular Django installation.       |
+| `SESSION_COOKIE_SECURE` | Whether to use a secure cookie for the session cookie    |
+| `DEBUG`                 | It provides a detailed traceback with the local variables|
+| `ALLOWED_HOSTS`         | A list of strings representing the host/domain names     |
 
 1. clone the repository:
 ```bash
